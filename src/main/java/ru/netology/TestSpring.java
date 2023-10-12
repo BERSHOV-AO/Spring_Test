@@ -20,9 +20,14 @@ public class TestSpring {
         // В качестве второго аргумента мы должны указать тот класс, объект которого мы хотим получить, в
         // данном случае TestBean.class
         // И кладем наш объект в переменную testBean
-        TestBean testBean = context.getBean("testBean", TestBean.class);
+        Music music = context.getBean("musicBean", Music.class);
         // У testBean вызываем метод getName(), что бы получить имя этого объекта.
-        System.out.println(testBean.getName());
+
+        // Мы создали наш MusicPlayer, Внедрили нашу зависимость в конструктор MusicPlayer.
+        MusicPlayer musicPlayer = new MusicPlayer(music);
+        // Вызываем метод playMusic();
+        musicPlayer.playMusic();
+       // System.out.println(testBean.getName());
         // В конце, мы должны обязательно закрыть context
         context.close();
     }

@@ -7,9 +7,13 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="testBean"
-          class="ru.netology.TestBean">
-        <constructor-arg value="Aleksey"/>   <!-- с помощью constructor-arg передаем строку, в данном случае имя -->
+<!--    Интерфейс мы писать не можем,(lass="ru.netology.) так как из интерфейса не возможно создать объект-->
+<!--    должно быть что то конкретное-->
+    <bean id="musicBean"
+          class="ru.netology.RockMusic">
+        <!--        Убираем конструктор, так как такого конструктора у нас нет-->
+        <!--        <constructor-arg value="Aleksey"/>   &lt;!&ndash; с помощью constructor-arg передаем строку,
+        в данном случае имя  &ndash;&gt;-->
     </bean>
 
 </beans>
