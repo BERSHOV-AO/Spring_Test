@@ -7,13 +7,21 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    Интерфейс мы писать не можем,(lass="ru.netology.) так как из интерфейса не возможно создать объект-->
-<!--    должно быть что то конкретное-->
+    <!--    Интерфейс мы писать не можем,(lass="ru.netology.) так как из интерфейса не возможно создать объект-->
+    <!--    должно быть что то конкретное-->
     <bean id="musicBean"
-          class="ru.netology.RockMusic">
+          class="ru.netology.ClassicalMusic">
         <!--        Убираем конструктор, так как такого конструктора у нас нет-->
         <!--        <constructor-arg value="Aleksey"/>   &lt;!&ndash; с помощью constructor-arg передаем строку,
         в данном случае имя  &ndash;&gt;-->
     </bean>
-
+    <bean id="musicPlayer"
+          class="ru.netology.MusicPlayer">
+        <!--        // Для того что бы вызвать конструктор у MusicPlayer, мы внутри бина пишем тег <constructor-arg-->
+        <!--        то есть передаем в тег наш musicBean, то есть передаем в конструктор musicPlayer-->
+        <!--        мы хотим что бы при создании musicPlayer в качестве бина в аргументы конструктора
+        передавался на musicBean-->
+        <!--        ref - reference - ссылка-->
+        <constructor-arg ref="musicBean"/>
+    </bean>
 </beans>

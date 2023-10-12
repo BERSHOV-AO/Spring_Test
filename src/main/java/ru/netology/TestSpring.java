@@ -14,20 +14,11 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-        // Теперь, из applicationContext.xml нужно достать наш файл bean
-        // С помощью метода getBean() у context. В аргументы getBean() передаем id нашего бина, который указан в
-        // файле applicationContext.xml -> <bean id="testBean"
-        // В качестве второго аргумента мы должны указать тот класс, объект которого мы хотим получить, в
-        // данном случае TestBean.class
-        // И кладем наш объект в переменную testBean
-        Music music = context.getBean("musicBean", Music.class);
-        // У testBean вызываем метод getName(), что бы получить имя этого объекта.
 
-        // Мы создали наш MusicPlayer, Внедрили нашу зависимость в конструктор MusicPlayer.
-        MusicPlayer musicPlayer = new MusicPlayer(music);
-        // Вызываем метод playMusic();
+        // создаем наш MusicPlayer через контекст, и в метод получения бина указываем id - musicPlayer
+        // В качестве второго аргумента передаем сам класс MusicPlayer.class
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
         musicPlayer.playMusic();
-       // System.out.println(testBean.getName());
         // В конце, мы должны обязательно закрыть context
         context.close();
     }
