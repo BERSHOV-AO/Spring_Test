@@ -3,6 +3,14 @@ package ru.netology;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpring {
+
+    /**
+     * Когда мы внедряем зависимость с помощью setter'a, Spring создает объект musicPlayer
+     * MusicPlayer musicPlayer = new MusicPlayer();
+     * Использует пустой конструктор
+     * Вызывает у обьекта musicPlayer setter, и в setter передает наш musicBean который был создан заранее!
+     * musicPlayer.setMusic(musicBean);
+     */
     public static void main(String[] args) {
 
         // ClassPathXmlApplicationContext - это класс обращается к файлу (applicationContext.xml), считываем его,
@@ -14,11 +22,13 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-
         // создаем наш MusicPlayer через контекст, и в метод получения бина указываем id - musicPlayer
         // В качестве второго аргумента передаем сам класс MusicPlayer.class
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
         musicPlayer.playMusic();
+
+        System.out.println(musicPlayer.getName());
+        System.out.println(musicPlayer.getVolume());
         // В конце, мы должны обязательно закрыть context
         context.close();
     }

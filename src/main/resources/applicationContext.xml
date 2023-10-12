@@ -7,6 +7,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--    Для импортирования файла musicPlayer.properties используем тег <context:property-placeholder-->
+    <!--    Файлы которые находятся в папке resources находятся в classpath-->
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
     <!--    Интерфейс мы писать не можем,(lass="ru.netology.) так как из интерфейса не возможно создать объект-->
     <!--    должно быть что то конкретное-->
     <bean id="musicBean"
@@ -17,11 +21,26 @@
     </bean>
     <bean id="musicPlayer"
           class="ru.netology.MusicPlayer">
-        <!--        // Для того что бы вызвать конструктор у MusicPlayer, мы внутри бина пишем тег <constructor-arg-->
-        <!--        то есть передаем в тег наш musicBean, то есть передаем в конструктор musicPlayer-->
-        <!--        мы хотим что бы при создании musicPlayer в качестве бина в аргументы конструктора
-        передавался на musicBean-->
-        <!--        ref - reference - ссылка-->
-        <constructor-arg ref="musicBean"/>
+        <!--        // пытается создать объект не передавая в конструктор ни чего-->
+        <!--        !!!! так как setter называется setMusic, сам Spring при поиске метода setMusic, отметает set и Music -->
+        <!--        представляет с маленькой буквы "music". По этому в <property name="music" с маленькой буквы, а когда -->
+        <!--        находим setter то передаем в аргументы setMusic на бин ref="musicBean"-->
+        <!--        ref - reference - это ссылка, когда мы передаем ссылку в аргументы-->
+        <property name="music" ref="musicBean"/>
+
+        <!--=========================================================================================================-->
+        <!--        Внедрение зависимостей через данный файл applicationContext.xml-->
+        <!--        value - это значение, когда мы передаем значение в аргументы-->
+        <!--        <property name="name" value="Some name"/>-->
+        <!--        <property name="volume" value="50"/>-->
+        <!--=========================================================================================================-->
+
+        <!--=========================================================================================================-->
+        <!--        Внедрение зависимостей через данный файл musicPlayer.properties-->
+        <!--        value - это значение, когда мы передаем значение в аргументы-->
+        <!--        через синтаксис ${} - можно обращаться к нашим значениям из файла musicPlayer.properties-->
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+        <!--=========================================================================================================-->
     </bean>
 </beans>
