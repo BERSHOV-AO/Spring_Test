@@ -25,6 +25,7 @@ public class TestSpring {
         ClassicalMusic classicalMusic = context.getBean("musicBean", ClassicalMusic.class);
         System.out.println(classicalMusic.getSong());
 
+
 //        // создаем наш MusicPlayer через контекст, и в метод получения бина указываем id - musicPlayer
 //        // В качестве второго аргумента передаем сам класс MusicPlayer.class
 //        MusicPlayer firstMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);

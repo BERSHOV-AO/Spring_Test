@@ -1,6 +1,13 @@
 package ru.netology;
 
 public class ClassicalMusic implements Music {
+    private ClassicalMusic() {}
+
+    // создаем фабричный метод, паттерн фабричного метода
+    // он должен быть обязательно static
+    public static ClassicalMusic getClassicalMusic() {
+        return new ClassicalMusic();
+    }
 
     public void doMyInit() {
         System.out.println("Doing my initialization");
