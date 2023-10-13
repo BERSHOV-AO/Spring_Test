@@ -22,27 +22,30 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-        // создаем наш MusicPlayer через контекст, и в метод получения бина указываем id - musicPlayer
-        // В качестве второго аргумента передаем сам класс MusicPlayer.class
-        MusicPlayer firstMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        MusicPlayer secondMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        ClassicalMusic classicalMusic = context.getBean("musicBean", ClassicalMusic.class);
+        System.out.println(classicalMusic.getSong());
 
-        boolean comparison = firstMusicPlayer == secondMusicPlayer;
-
-        System.out.println(comparison);
-        System.out.println(firstMusicPlayer);
-        System.out.println(secondMusicPlayer);
-
-        firstMusicPlayer.setVolume(10);
-
-        System.out.println(firstMusicPlayer.getVolume());
-        System.out.println(secondMusicPlayer.getVolume());
-
-        // musicPlayer.playMusic();
-
-        //  System.out.println(musicPlayer.getName());
-        //  System.out.println(musicPlayer.getVolume());
-        // В конце, мы должны обязательно закрыть context
+//        // создаем наш MusicPlayer через контекст, и в метод получения бина указываем id - musicPlayer
+//        // В качестве второго аргумента передаем сам класс MusicPlayer.class
+//        MusicPlayer firstMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+//        MusicPlayer secondMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+//
+//        boolean comparison = firstMusicPlayer == secondMusicPlayer;
+//
+//        System.out.println(comparison);
+//        System.out.println(firstMusicPlayer);
+//        System.out.println(secondMusicPlayer);
+//
+//        firstMusicPlayer.setVolume(10);
+//
+//        System.out.println(firstMusicPlayer.getVolume());
+//        System.out.println(secondMusicPlayer.getVolume());
+//
+//        // musicPlayer.playMusic();
+//
+//        //  System.out.println(musicPlayer.getName());
+//        //  System.out.println(musicPlayer.getVolume());
+//        // В конце, мы должны обязательно закрыть context
         context.close();
     }
 }
