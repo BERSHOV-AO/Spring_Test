@@ -38,10 +38,10 @@ public class TestSpring {
         System.out.println(firstMusicPlayer.getVolume());
         System.out.println(secondMusicPlayer.getVolume());
 
-       // musicPlayer.playMusic();
+        // musicPlayer.playMusic();
 
-      //  System.out.println(musicPlayer.getName());
-      //  System.out.println(musicPlayer.getVolume());
+        //  System.out.println(musicPlayer.getName());
+        //  System.out.println(musicPlayer.getVolume());
         // В конце, мы должны обязательно закрыть context
         context.close();
     }

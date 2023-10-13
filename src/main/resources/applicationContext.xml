@@ -21,7 +21,7 @@
     </bean>
     <bean id="musicPlayer"
           class="ru.netology.MusicPlayer"
-          scope="prototype"> <!-- По дефолту singleton -->
+          scope="prototype"> <!--по дефолту singleton-->
         <!--        // пытается создать объект не передавая в конструктор ни чего-->
         <!--        !!!! так как setter называется setMusic, сам Spring при поиске метода setMusic, отметает set и Music -->
         <!--        представляет с маленькой буквы "music". По этому в <property name="music" с маленькой буквы, а когда -->
